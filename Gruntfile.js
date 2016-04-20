@@ -1,4 +1,5 @@
-var grunt = require('grunt');
+var grunt = require('grunt'),
+    jsHintReporter = require('jshint-teamcity');
 
 grunt.loadNpmTasks('grunt-contrib-jshint');
 grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -7,7 +8,10 @@ grunt.loadNpmTasks('grunt-processhtml');
 // Project configuration.
 grunt.initConfig({
     jshint: {
-        all: ['Gruntfile.js', 'src/**/*.js']
+        options: {
+            reporter: jsHintReporter
+        },
+        build: ['Gruntfile.js', 'src/**/*.js']
     },
 
     uglify: {
